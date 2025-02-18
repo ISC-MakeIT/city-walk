@@ -6,8 +6,6 @@ import "./Weather.css"; // Import the CSS file
 const API_KEY = process.env.REACT_APP_WEATHER_API_KEY; // .env から取得
 const CITY_ID = "1848354"; // 神奈川県（横浜）の都市ID
 
-console.log("API_KEY:", API_KEY); // APIキーが適切に取得されているか確認
-//この文消すやつ
 const Weather: React.FC = () => {
   const [weather, setWeather] = useState<WeatherData | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
@@ -18,7 +16,7 @@ const Weather: React.FC = () => {
     const fetchWeather = async () => {
       try {
         const response = await axios.get(
-            `https://api.openweathermap.org/data/2.5/weather?q=${CITY}&appid=${API_KEY}&units=metric`
+            `https://api.openweathermap.org/data/2.5/weather?id=${CITY_ID}&appid=${API_KEY}&units=metric`
         );
         setWeather(response.data);
       } catch (err) {
@@ -40,11 +38,11 @@ const Weather: React.FC = () => {
   const getBackgroundGradient = (weatherType: string): string => {
     switch (weatherType) {
       case "Clear":
-        return "linear-gradient(180deg, #CFEBF7 0%, #A0D8EF 31.67%, #FFF 100%);";
+        return "linear-gradient(180deg, #CFEBF7 0%, #A0D8EF 31.67%, #FFF 100%)";
       case "Clouds":
-        return "linear-gradient(180deg, #CED1D3 25.67%, #FFF 100%);";
+        return "linear-gradient(180deg, #CED1D3 25.67%, #FFF 100%)";
       case "Rain":
-        return "background: linear-gradient(180deg, #CED1D3 17.4%, #0F5779 72.4%);";
+        return "background: linear-gradient(180deg, #CED1D3 17.4%, #0F5779 72.4%)";
       case "Snow":
         return "linear-gradient(180deg, #E0F7FA 0%, #B3E5FC 50%, #FFF 100%)";
       case "Thunderstorm":
