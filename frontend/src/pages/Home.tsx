@@ -10,11 +10,9 @@ const Home: React.FC = () => {
     return (
         <div style={{ fontSize: `${fontSize}px` }}>
             <Weather />
-            <h1>ホームページ</h1>
-            <p>当日できるタスクを表示</p>
-
             {/* Todo コンポーネントに userPoints と setUserPoints を渡す */}
             <Todo setUserPoints={setUserPoints} userPoints={userPoints} />
+
         </div>
     );
 };

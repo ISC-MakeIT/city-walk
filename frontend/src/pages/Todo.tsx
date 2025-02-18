@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useFontSize } from "../context/FontSizeContext";
 import "./Todo.css";
 import axios from "axios";
-import Weather from "../components/Weather";
 
 interface TodoProps {
   setUserPoints: (points: number) => void;
@@ -109,7 +108,7 @@ const Todo: React.FC<TodoProps> = ({ setUserPoints, userPoints }) => {
           <div className="settings-button" onClick={() => setShowSettings(!showSettings)}>
             &#9776;
           </div>
-          <Weather />
+
           {showSettings && (
               <div className="settings-frame">
                 <div className="settings-content">
