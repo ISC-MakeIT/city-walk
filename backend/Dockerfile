@@ -1,17 +1,19 @@
-FROM node:18
+# ベースイメージとして Node.js を使用
+FROM node:18 AS build
 
+# 作業ディレクトリを設定
 WORKDIR /app
 
-# `package.json` を確実にコピー
+# package.json と package-lock.json を最初にコピーして依存関係をインストール
+# これにより依存関係が変わらない限りキャッシュを使うためビルドが速くなる
 COPY package.json package-lock.json ./
-
-# 依存関係のインストール
 RUN npm install
 
-# 残りのコードをコピー
+# アプリケーションのソースコードをコピー
 COPY . .
 
-# ポートを開放
-EXPOSE 3000
+# ポート3001を公開
+EXPOSE 3001
 
-CMD ["npm", "run", "dev"]
+# 開発環境の場合（npm run devを実行）
+CMD ["npm", "run", "start"]

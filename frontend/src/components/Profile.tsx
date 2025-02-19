@@ -1,13 +1,22 @@
 import React from "react";
 
-const Profile: React.FC = () => {
-  return (
-    <div>
-        <h1>プロフィール</h1>
-        <p>名前: 〇〇〇〇</p>
-        <p>年齢: 〇〇</p>
-        <p>住所: 〇〇〇〇</p>
-    </div>
-  );
+interface ProfileProps {
+    profile: { name: string; age: number; sex: string } | null;
+}
+
+const Profile: React.FC<ProfileProps> = ({ profile }) => {
+    if (!profile) {
+        return <p>プロフィール情報はありません。</p>;
+    }
+
+    return (
+        <div>
+            <h2>プロフィール</h2>
+            <p>名前: {profile.name}</p>
+            <p>年齢: {profile.age}</p>
+            <p>性別: {profile.sex}</p>
+        </div>
+    );
 };
+
 export default Profile;

@@ -1,27 +1,28 @@
 import React from "react";
-import "../App"
-
+import { useLocation } from "react-router-dom";
+import "./Footer.css";
 
 const Footer: React.FC = () => {
-  return (
+    const location = useLocation();
 
-    <footer className="app-footer">
-        <ul>
-            <li>
-                <a href="/home">ホーム</a>
-            </li>
-            <li>
-                <a href="/todo">ToDoリスト</a>
-            </li>
-            <li>
-                <a href="/setting">設定</a>
-            </li>
-            <li>
-                <a href="/progress">マップ</a>
-            </li>
-        </ul>
-    </footer>
-
-  );
+    return (
+        <footer className="app-footer">
+            <ul>
+                <li>
+                    <a href="/home" className={location.pathname === "/home" ? "active" : ""}>ホーム</a>
+                </li>
+                <li>
+                    <a href="/todo" className={location.pathname === "/todo" ? "active" : ""}>ToDo履歴</a>
+                </li>
+                <li>
+                    <a href="/setting" className={location.pathname === "/setting" ? "active" : ""}>設定</a>
+                </li>
+                <li>
+                    <a href="/progress" className={location.pathname === "/progress" ? "active" : ""}>マップ</a>
+                </li>
+            </ul>
+        </footer>
+    );
 };
+
 export default Footer;

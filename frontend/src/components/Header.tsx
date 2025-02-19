@@ -1,19 +1,18 @@
-import React from 'react';
-import { BrowserRouter, BrowserRouter as Router } from 'react-router-dom';
-import { ReactDOM } from 'react';
-import "../App.css";
+// Header.tsx
+interface HeaderProps {
+    points: number;
+}
 
-const Header: React.FC = () => {
+const Header: React.FC<HeaderProps> = ({ points }) => {
     return (
         <div>
-            <header className="app-header">
-                <h1>日常生活アプリ</h1>
-            </header>
-
-            <nav className='app-date'>
-                <p>今日の日付: {new Date().toLocaleDateString('ja-JP')}</p>
-            </nav>
-        </div>        
+            <div className="header">日常生活アプリ</div>
+            <div className='app-date'>
+                <div className={"nowDay"}>今日の日付: {new Date().toLocaleDateString('ja-JP')}</div>
+                <div className={"point"}>獲得ポイント数：{points}p</div>
+            </div>
+        </div>
     );
-    }
-export {Header};
+};
+
+export { Header };

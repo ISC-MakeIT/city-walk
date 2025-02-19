@@ -1,0 +1,17 @@
+/* Weather.css */
+.weather-container {
+    text-align: center;
+    color: black;
+    padding: 20px;
+    height: 10vh; /* Adjusted height */
+    transition: background 1s ease-in-out;
+    margin-top: -20px;
+    margin-right: 20px;
+}
+
+.weather-info {
+    font-size: 1em;
+    margin: 5px 0px;
+    color: #3CB371;
+    margin-top: -10px;
+}

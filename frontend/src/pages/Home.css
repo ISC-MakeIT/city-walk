@@ -1,0 +1,16 @@
+/* ヘッダー */
+div.header{
+    color: white;
+    background-color: #3CB371;
+    font-size: 2em;
+    text-align: center;
+}
+nav.app-date{
+    height: 60px;
+}
+div.point{
+    border: 2px solid black;
+    display: inline-block;
+    padding: 2px 10px 2px 2px;
+    text-align: right;
+}

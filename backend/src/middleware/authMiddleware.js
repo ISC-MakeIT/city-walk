@@ -1,14 +1,18 @@
+const jwt = require("jsonwebtoken");
+const config = require("../config");
+
 const authenticate = (req, res, next) => {
-    const token = req.header('Authorization');
+    const token = req.header("Authorization")?.replace("Bearer ", "");
+
     if (!token) {
-        return res.status(401).json({ message: 'No token provided' });
+        return res.status(401).json({ message: "No token provided" });
     }
 
-    // トークン検証処理（仮）
-    if (token === 'valid-token') {
+    try {
+        req.user = jwt.verify(token, config.JWT_SECRET); // 🔹 直接代入
         next();
-    } else {
-        res.status(403).json({ message: 'Forbidden' });
+    } catch (error) {
+        res.status(403).json({ message: "Forbidden" });
     }
 };
 
